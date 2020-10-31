@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TxtFileModifier": {
+      "commandName": "Project",
+      "commandLineArgs": "a"
+    }
+  }
+}

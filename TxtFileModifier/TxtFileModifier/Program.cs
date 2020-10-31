@@ -5,44 +5,38 @@ namespace TxtFileModifier
 {
     class Program
     {
+        // "y" CAN BE A CHAR OR A STRING
+        // x must be a int
+//-----------------------------------------------------
         // -F file location
         // -O output file
         // -L cut when lenght bigger then x
-        static string FILELOCATION;
-        static string FILEOUTPUT;
+        // -C cut when line contains "y"
+        // -S cut when line starts with "y"
+        // -E cut when line ends with "y"
+        // -H and help display help
+
+        
         static void Main(string[] args)
         {
-            if (args.Length == 0){
-                Console.WriteLine("Arguments Required");
+            if (args[0] == "help" || args[0] == "-H")
+            {
+                Help();
             }
-            else{
-                int argCursor = 0;
-                while (argCursor < args.Length){
-                    switch (args[argCursor]){
-                        case "-F":
-                            FILELOCATION = args[argCursor + 1];
-                            Console.WriteLine(" File to be read : " + FILELOCATION);
-                            break;
-
-                        case "-O":
-                            FILEOUTPUT = args[argCursor + 1];
-                            Console.WriteLine(" Data will be written to : " + FILEOUTPUT);
-                            break;
-
-                        case "-L":
-                            break;
-                        
-                        default:
-                            Console.WriteLine(" Argument unknown");
-                            break;
-                    };
-                }
-
+            else
+            {
+                Handler h = new Handler(args);
             }
+            
             
         }
 
+        static void Help()
+        {
 
+        }
+
+        
 
     }
 }
