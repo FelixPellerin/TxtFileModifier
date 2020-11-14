@@ -7,7 +7,7 @@ namespace TxtFileModifier
     {
         private StreamReader reader;
         private StreamWriter writer;
-        private string FILELOCATION;
+        private string FILELOCATION = "";
         private string FILEOUTPUT = "output.txt";
         //This does not contain input or output files paths, they are set to the variables when the variables are sorted
         private string[,] argsSorted;
@@ -20,7 +20,8 @@ namespace TxtFileModifier
                 Console.WriteLine("Arguments Required");
             }
             else
-            {                
+            {
+                int c = 0;
                 argsSorted = new string[args.Length / 2, 2];                
                 for (int a = 0; a < args.Length; a++)
                 {
@@ -38,15 +39,28 @@ namespace TxtFileModifier
                     }
                     else
                     {
-                        argsSorted[a, 0] = args[a];
-                        argsSorted[a, 1] = args[a + 1];
-                        a++;                        
+                        try
+                        {
+                            argsSorted[c, 0] = args[a];
+                            argsSorted[c, 1] = args[a + 1];
+                            c++;
+                            a++;
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                                               
                     }
                 }
 
-                int i = 0;
+                int i = 0;                
                 while (argsSorted[i, 0] != null)
                 {
+                    if (FILELOCATION == "")
+                    {
+                        Console.WriteLine("File to be edited required: use the -F argument followed by the path of the file");
+                    }
                     switch (argsSorted[i, 0])
                     {                       
                         case "-L":
@@ -83,14 +97,26 @@ namespace TxtFileModifier
             int i;
             if (FILELOCATION != null && int.TryParse(arg, out i))
             {
-                reader = new StreamReader(FILELOCATION);
+                try
+                {
+                    reader = new StreamReader(FILELOCATION);
+                } catch (Exception e)
+                {
+                    Console.WriteLine("File not found, please verify if the file exists");
+                    Environment.Exit(0);
+                }
+                
                 writer = new StreamWriter(FILEOUTPUT);
                 string line;
-                while ((line = reader.ReadLine()).Length < i)
+                while ((line = reader.ReadLine()) != null)
                 {
-                    writer.WriteLine(line);
+                    if (line.Length <= i)
+                    {
+                        writer.WriteLine(line);
+                    }
                 }
-                Console.WriteLine("Data writttent to : " + FILEOUTPUT);
+                writer.Close();
+                Console.WriteLine("Data written to : " + FILEOUTPUT);
             }
         }
 
@@ -98,7 +124,15 @@ namespace TxtFileModifier
         {
             if (FILELOCATION != null)
             {
-                reader = new StreamReader(FILELOCATION);
+                try
+                {
+                    reader = new StreamReader(FILELOCATION);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("File not found, please verify if the file exists");
+                    Environment.Exit(0);
+                }
                 writer = new StreamWriter(FILEOUTPUT);
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -108,6 +142,7 @@ namespace TxtFileModifier
                         writer.WriteLine(line);
                     }
                 }
+                writer.Close();
             }
         }
 
@@ -115,7 +150,15 @@ namespace TxtFileModifier
         {
             if (FILELOCATION != null)
             {
-                reader = new StreamReader(FILELOCATION);
+                try
+                {
+                    reader = new StreamReader(FILELOCATION);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("File not found, please verify if the file exists");
+                    Environment.Exit(0);
+                }
                 writer = new StreamWriter(FILEOUTPUT);
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -125,6 +168,7 @@ namespace TxtFileModifier
                         writer.WriteLine(line);
                     }
                 }
+                writer.Close();
             }
         }
 
@@ -132,7 +176,15 @@ namespace TxtFileModifier
         {
             if (FILELOCATION != null)
             {
-                reader = new StreamReader(FILELOCATION);
+                try
+                {
+                    reader = new StreamReader(FILELOCATION);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("File not found, please verify if the file exists");
+                    Environment.Exit(0);
+                }
                 writer = new StreamWriter(FILEOUTPUT);
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -142,9 +194,15 @@ namespace TxtFileModifier
                         writer.WriteLine(line);
                     }
                 }
+                writer.Close();
             }
         }
 
+        private void showHelp()
+        {
+
+            Environment.Exit(0);
+        }
 
     }
 }

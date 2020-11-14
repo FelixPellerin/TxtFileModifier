@@ -25,7 +25,7 @@ namespace TxtFileModifier
             }
             else
             {
-                Handler h = new Handler(args);
+                new Handler(args);
             }
             
             
