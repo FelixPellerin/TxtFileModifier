@@ -1,8 +1,7 @@
 {
   "profiles": {
     "TxtFileModifier": {
-      "commandName": "Project",
-      "commandLineArgs": "-F copie.txt -E n -O textOutput.txt"
+      "commandName": "Project"
     }
   }
 }
