@@ -1,10 +1,10 @@
 # TxtFileModifier
 
-This utility allows you to modify large txt files using command line arguments. It is sometimes not practical to manually remove lines from a txt file when it is large, so why not let the machine to it for you? There is no real limit to how large a file can be, but you will most likely cap your ram usage if you are using a file that is bigger or close to the available ram on your machine. Currently only supports UTF-8 encoding, but will add more in the future.
+This utility allows you to modify large txt files using command line arguments. It is sometimes not practical to manually remove lines from a txt file when it is large, so why not let the machine to it for you? There is no real limit to how large a file can be, but you will most likely cap your ram usage if you are using a file that is bigger or close to the available ram on your machine. Currently only supports UTF-8 encoding, but will add more in the future. Currently compatible with windows and linux since i have no way to test it on other platforms.
 
 ## About this project
 
-This all begin when a friend of mine asked me to do some kind of formating on a large txt file. It was not practical to do it by hand, and i didn't find any command line tools online, so i made a quick tool to do it, and it grew into this. Still not much but im putting it here in hope that it will be useful to someone, even if it is only a simple program. Looking forward to add more features.
+This all begin when a friend asked me to do some kind of formating on a large txt file. It was not practical to do it by hand, and i didn't find any command line tools online, so i made a quick tool to do it, and it grew into this. Still not much but im putting it here in hope that it will be useful to someone, even if it is only a simple program. Looking forward to add more features.
 
 ## Built With
 
@@ -46,3 +46,4 @@ Here are the parameters and their function. If you need to use an argument with 
 > -B : Set encoding type of output file. (Default : UTF-8)
 
 > -P : Sort the lines in alphabetical order
+> -PR : Sort the lines in reverse alphabetical order
